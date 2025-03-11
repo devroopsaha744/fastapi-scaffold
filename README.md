@@ -1,3 +1,25 @@
+### Updates to Make:
+
+#### 1. **Version Bump in `setup.py`**
+Since you added commands and modified the template, update the version:
+```python
+version="0.2.0",
+```
+
+#### 2. **Update README.md to Reflect New CLI Commands**
+Your `cli.py` now includes:
+- `serve` (Runs the API)
+- `install` (Installs dependencies)
+- `test` (Runs tests)
+- `info` (Shows CLI details)
+- `clean` (Removes `__pycache__`)
+
+Modify the README to mention these commands.
+
+---
+
+### **Updated README.md**
+```md
 # FastAPI Scaffold
 
 [![PyPI Version](https://img.shields.io/pypi/v/fastapi-scaffold.svg)](https://pypi.org/project/fastapi-scaffold/)
@@ -16,30 +38,57 @@ pip install fastapi-scaffold
 
 ## Usage
 
-To create a new FastAPI project, use the following command:
+To create a new FastAPI project, use:
 
 ```sh
 fastapi-scaffold create my_project
 ```
 
-This will generate a basic FastAPI project structure inside the `my_project` directory.
+This generates a FastAPI project in `my_project/`.
 
 ### Options
 
-You can customize the generated project using the following flags:
+Customize the generated project using:
 
 ```sh
 fastapi-scaffold create my_project --ml --db --auth --docker
 ```
 
-- `--ml` → Includes boilerplate for integrating ML models
-- `--db` → Adds database configuration and ORM setup
-- `--auth` → Includes authentication (OAuth, JWT, etc.)
-- `--docker` → Generates a `Dockerfile` and `docker-compose.yml`
+- `--ml` → Includes ML model boilerplate  
+- `--db` → Adds database setup  
+- `--auth` → Includes authentication  
+- `--docker` → Adds Docker support  
+
+### Additional Commands
+
+- **Run API server:**  
+  ```sh
+  fastapi-scaffold serve --host 0.0.0.0 --port 8000
+  ```
+  
+- **Install dependencies:**  
+  ```sh
+  fastapi-scaffold install
+  ```
+
+- **Run tests:**  
+  ```sh
+  fastapi-scaffold test
+  ```
+
+- **View CLI info:**  
+  ```sh
+  fastapi-scaffold info
+  ```
+
+- **Clean `__pycache__`:**  
+  ```sh
+  fastapi-scaffold clean
+  ```
 
 ## Project Structure
 
-A generated FastAPI project will follow this structure:
+A generated project follows this structure:
 
 ```
 my_project/
@@ -59,26 +108,19 @@ my_project/
 
 ## Running the Project
 
-After creating the project, navigate to your project directory and install dependencies:
-
 ```sh
 cd my_project
 pip install -r requirements.txt
-```
-
-Then, start the FastAPI application:
-
-```sh
 uvicorn app.main:app --reload
 ```
 
-The API will be available at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+API available at [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
 ## Contributing
 
-Contributions are welcome! If you find a bug or want to request a feature, feel free to open an issue or submit a pull request.
+Contributions welcome! Open an issue or PR.
 
 ## License
 
-This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
+MIT License. See [LICENSE](LICENSE).
 
