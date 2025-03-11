@@ -1,4 +1,4 @@
-ENHANCED_TEMPLATE = {
+TEMPLATE = {
     "app": {
         "api": {
             "__init__.py": "from fastapi import APIRouter\n\napi_router = APIRouter()\n\nfrom app.api import users, items, admin, ml, health\n\napi_router.include_router(users.router, prefix='/users', tags=['users'])\napi_router.include_router(items.router, prefix='/items', tags=['items'])\napi_router.include_router(admin.router, prefix='/admin', tags=['admin'])\napi_router.include_router(ml.router, prefix='/ml', tags=['machine learning'])\napi_router.include_router(health.router, prefix='/health', tags=['health'])\n",
