@@ -1,14 +1,14 @@
-# FastAPI Scaffold
+# fastapi-scaffold
 
 [![PyPI Version](https://img.shields.io/pypi/v/fastapi-scaffold.svg)](https://pypi.org/project/fastapi-scaffold/)
 [![Python Version](https://img.shields.io/badge/python-%3E=3.7-blue)](https://www.python.org/)
 [![License](https://img.shields.io/badge/license-MIT-green)](LICENSE)
 
-FastAPI Scaffold is a CLI tool to quickly generate FastAPI project structures with optional features like authentication, database integration, machine learning model setup, and Docker support.
+fastapi-scaffold is a CLI tool that generates a scalable FastAPI project template with advanced features including authentication, machine learning endpoints, background tasks, caching, rate limiting, and more.
 
 ## Installation
 
-To install FastAPI Scaffold, run:
+Install the CLI tool via pip:
 
 ```sh
 pip install fastapi-scaffold
@@ -16,89 +16,126 @@ pip install fastapi-scaffold
 
 ## Usage
 
-To create a new FastAPI project, use:
+### Create a New FastAPI Project
+
+To create a new project, run:
 
 ```sh
 fastapi-scaffold create my_project
 ```
 
-This generates a FastAPI project in `my_project/`.
+This command generates a new project with optional features:
 
-### Options
+- `--ml` → Includes machine learning endpoints and model setup.
+- `--db` → Adds database configuration and ORM setup.
+- `--auth` → Includes authentication endpoints.
+- `--docker` → Generates Dockerfile and docker-compose.yml for container support.
 
-Customize the generated project using:
+Example:
 
 ```sh
 fastapi-scaffold create my_project --ml --db --auth --docker
 ```
 
-- `--ml` → Includes ML model boilerplate  
-- `--db` → Adds database setup  
-- `--auth` → Includes authentication  
-- `--docker` → Adds Docker support  
+### Install Project Dependencies
 
-### Additional Commands
+After generating your project, navigate into the project directory and install dependencies:
 
-- **Run API server:**  
-  ```sh
-  fastapi-scaffold serve --host 0.0.0.0 --port 8000
-  ```
-  
-- **Install dependencies:**  
-  ```sh
-  fastapi-scaffold install
-  ```
+```sh
+fastapi-scaffold install
+```
 
-- **Run tests:**  
-  ```sh
-  fastapi-scaffold test
-  ```
+Alternatively, run:
 
-- **View CLI info:**  
-  ```sh
-  fastapi-scaffold info
-  ```
+```sh
+pip install -r requirements.txt
+```
 
-- **Clean `__pycache__`:**  
-  ```sh
-  fastapi-scaffold clean
-  ```
+### Delete an Existing Project
+
+To delete a project directory, use:
+
+```sh
+fastapi-scaffold delete my_project
+```
 
 ## Project Structure
 
-A generated project follows this structure:
+A generated project will have the following structure:
 
 ```
 my_project/
-│── app/
-│   ├── main.py
-│   ├── routes/
+├── app/
+│   ├── api/
+│   │   ├── __init__.py
+│   │   ├── users.py
+│   │   ├── items.py
+│   │   ├── admin.py
+│   │   ├── ml.py
+│   │   └── health.py
+│   ├── schemas/
+│   │   ├── __init__.py
+│   │   ├── user.py
+│   │   ├── item.py
+│   │   ├── ml.py
+│   │   └── stats.py
 │   ├── models/
+│   │   ├── __init__.py
+│   │   ├── user.py
+│   │   ├── item.py
+│   │   └── ml_model.pkl
+│   ├── crud/
+│   │   ├── __init__.py
+│   │   ├── user.py
+│   │   ├── item.py
+│   │   └── stats.py
 │   ├── services/
-│   ├── db.py (if --db is used)
-│   ├── auth.py (if --auth is used)
-│── tests/
-│── .env
-│── Dockerfile (if --docker is used)
-│── requirements.txt
-│── README.md
+│   │   ├── __init__.py
+│   │   ├── auth.py
+│   │   ├── tasks.py
+│   │   └── ml.py
+│   ├── utils/
+│   │   ├── __init__.py
+│   │   ├── dependencies.py
+│   │   ├── cache.py
+│   │   └── rate_limit.py
+│   ├── middleware.py
+│   ├── database.py
+│   ├── auth.py
+│   ├── logger.py
+│   ├── config.py
+│   └── main.py
+├── tests/
+│   ├── test_main.py
+│   └── test_users.py
+├── .env
+├── requirements.txt
+├── Dockerfile
+├── docker-compose.yml
+└── README.md
 ```
 
 ## Running the Project
 
-```sh
-cd my_project
-pip install -r requirements.txt
-uvicorn app.main:app --reload
-```
+1. Navigate to the project directory:
+    ```sh
+    cd my_project
+    ```
+2. Install dependencies:
+    ```sh
+    pip install -r requirements.txt
+    ```
+3. Start the FastAPI server:
+    ```sh
+    uvicorn app.main:app --reload
+    ```
 
-API available at [http://127.0.0.1:8000](http://127.0.0.1:8000).
+The API will be available at [http://127.0.0.1:8000](http://127.0.0.1:8000).
 
 ## Contributing
 
-Contributions welcome! Open an issue or PR.
+Contributions are welcome! Please open an issue or submit a pull request for any improvements or bug fixes.
 
 ## License
 
-MIT License. See [LICENSE](LICENSE).
-
+This project is licensed under the MIT License. See the [LICENSE](LICENSE) file for details.
