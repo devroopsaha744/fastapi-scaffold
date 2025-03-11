@@ -1,25 +1,3 @@
-### Updates to Make:
-
-#### 1. **Version Bump in `setup.py`**
-Since you added commands and modified the template, update the version:
-```python
-version="0.2.0",
-```
-
-#### 2. **Update README.md to Reflect New CLI Commands**
-Your `cli.py` now includes:
-- `serve` (Runs the API)
-- `install` (Installs dependencies)
-- `test` (Runs tests)
-- `info` (Shows CLI details)
-- `clean` (Removes `__pycache__`)
-
-Modify the README to mention these commands.
-
----
-
-### **Updated README.md**
-```md
 # FastAPI Scaffold
 
 [![PyPI Version](https://img.shields.io/pypi/v/fastapi-scaffold.svg)](https://pypi.org/project/fastapi-scaffold/)
